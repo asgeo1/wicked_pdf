@@ -85,7 +85,7 @@ module PdfHelper
       [:header, :footer].each do |hf|
         if options[hf] && options[hf][:html] && options[hf][:html][:template]
           @hf_tempfiles = [] if ! defined?(@hf_tempfiles)
-          @hf_tempfiles.push( tf=WickedPdfTempfile.new("wicked_#{hf}_pdf.html") )
+          @hf_tempfiles.push( tf=WickedPdfTempfile.new("wicked_#{hf}_pdf.xhtml") )
           options[hf][:html][:layout] ||=  options[:layout]
           render_opts = {:template => options[hf][:html][:template], :layout => options[hf][:html][:layout], :locals => options[hf][:html][:locals], :formats => options[hf][:html][:formats], :handlers => options[hf][:html][:handlers]}
           render_opts.merge!({:file => options[hf][:html][:file]}) if options[:file]

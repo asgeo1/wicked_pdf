@@ -47,7 +47,7 @@ class WickedPdf
     end
 
     temp_path = options.delete(:temp_path)
-    string_file = WickedPdfTempfile.new("wicked_pdf.html", temp_path)
+    string_file = WickedPdfTempfile.new("wicked_pdf.xhtml", temp_path)
     string_file.write(string)
     string_file.close
     generated_pdf_file = WickedPdfTempfile.new("wicked_pdf_generated_file.pdf", temp_path)
@@ -152,7 +152,7 @@ class WickedPdf
           r += make_options(opt_hf, [:line], "#{hf.to_s}", :boolean)
           if options[hf] && options[hf][:content]
             @hf_tempfiles = [] if ! defined?(@hf_tempfiles)
-            @hf_tempfiles.push( tf=WickedPdfTempfile.new("wicked_#{hf}_pdf.html") )
+            @hf_tempfiles.push( tf=WickedPdfTempfile.new("wicked_#{hf}_pdf.xhtml") )
             tf.write options[hf][:content]
             tf.flush
             options[hf].delete(:content)
